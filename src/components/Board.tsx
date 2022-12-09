@@ -7,6 +7,7 @@ interface BoardProps {
 
 export default function Board(props: BoardProps) {
   const { state, handleClick } = props;
+  console.log({ state });
   return (
     <div>
       {state.map((element) => {

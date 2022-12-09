@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 import Board from './components/Board';
 import { shuffleArray, getLink, randomNumber } from './components/images';
+import LoadingScreen from './components/LoadingScree';
 
 export interface Image {
   id: number;
   link: string;
   name: string;
   isClicked: boolean;
+  abilities: string[];
+  base_experience: number;
+  height: number;
+  order: number;
+  weight: number;
 }
 
 function App() {
@@ -17,6 +23,10 @@ function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [isLoading, setIsloading] = useState(true);
   const [pokemonData, setPokemonData] = useState<Image[]>([]);
+
+  function handleLoadingScreen() {
+    setIsloading(false);
+  }
 
   // handleLoading changes the value of loading state
   useEffect(() => {
@@ -32,17 +42,30 @@ function App() {
             )
           )
         );
-        const formattedData = data.map(({ name, id }) => ({
-          name,
-          id,
-          link: getLink(id),
-          isClicked: false,
-        }));
+        const formattedData = data.map(
+          ({
+            name,
+            id,
+            height,
+            weight,
+            order,
+            base_experience,
+            abilities,
+          }) => ({
+            abilities,
+            height,
+            weight,
+            order,
+            base_experience,
+            name,
+            id,
+            link: getLink(id),
+            isClicked: false,
+          })
+        );
         setPokemonData(formattedData);
       } catch (e) {
         console.error(e);
-      } finally {
-        setIsloading(false);
       }
     };
 
@@ -53,11 +76,11 @@ function App() {
     if (pokemon.isClicked === false) {
       pokemon.isClicked = true;
       setPokemonData(shuffleArray(pokemonData));
-      setScore(score + level);
+      setScore((prev) => prev + level);
       setRound(round + 1);
       if (round === pokemonData.length) {
         setRound(1);
-        setLevel(level + 1);
+        setLevel((prev) => prev + 1);
       }
     } else {
       setLevel(1);
@@ -68,7 +91,14 @@ function App() {
     }
   };
 
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading)
+    return (
+      <LoadingScreen
+        level={level}
+        images={pokemonData}
+        handleLoading={handleLoadingScreen}
+      />
+    );
   return (
     <div>
       <div>level {level}</div>
