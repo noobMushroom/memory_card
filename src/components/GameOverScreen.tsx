@@ -39,7 +39,7 @@ export default function GameOverScreen(props: GameOverScreenProps) {
           if (element.lastPokemon) {
             return (
               <li
-                className="flex flex-col items-center bg-[#CC0000]  m-[0.5rem] box-border shadows w-[10rem] h-[15rem] text-xl font-medium rounded-3xl border-[5px] border-black"
+                className="flex justify-center flex-col items-center bg-[#CC0000]  m-[0.5rem] box-border shadows w-[10rem] h-[15rem] text-xl font-medium rounded-3xl border-[5px] border-black"
                 key={uuid()}
               >
                 <img src={element.link} alt="" />
@@ -50,7 +50,7 @@ export default function GameOverScreen(props: GameOverScreenProps) {
           if (element.isClicked) {
             return (
               <li
-                className="bg-[#3B4CCA] flex flex-col items-center m-[0.5rem] shadows box-border w-[10rem] h-[15rem] text-xl font-medium rounded-3xl border-[5px] border-black"
+                className="bg-[#3B4CCA] justify-center flex flex-col items-center m-[0.5rem] shadows box-border w-[10rem] h-[15rem] text-xl font-medium rounded-3xl border-[5px] border-black"
                 key={uuid()}
               >
                 <img src={element.link} alt="" />
@@ -60,7 +60,7 @@ export default function GameOverScreen(props: GameOverScreenProps) {
           } else {
             return (
               <li
-                className="bg-[#B3A125] flex flex-col items-center shadows m-[0.5rem] box-border w-[10rem] h-[15rem] text-xl font-medium rounded-3xl border-[5px] border-black"
+                className="bg-[#B3A125] flex flex-col justify-center items-center shadows m-[0.5rem] box-border w-[10rem] h-[15rem] text-xl font-medium rounded-3xl border-[5px] border-black"
                 key={uuid()}
               >
                 <img src={element.link} alt="" />

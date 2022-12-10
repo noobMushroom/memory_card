@@ -109,6 +109,7 @@ function App() {
   if (isLoading)
     return (
       <LoadingScreen
+        score={score}
         level={level}
         images={prevImages.current}
         handleLoading={handleLoadingScreen}

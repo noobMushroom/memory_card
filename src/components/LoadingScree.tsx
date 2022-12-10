@@ -6,6 +6,7 @@ import { useRef } from 'react';
 interface LoadingScreenProps {
   level: number;
   images: Image[];
+  score: number;
   handleLoading: () => void;
 }
 
@@ -22,7 +23,7 @@ function randomPokemon(pics: Image[]) {
 }
 
 export default function LoadingScreen(props: LoadingScreenProps) {
-  const { level, images, handleLoading } = props;
+  const { score, level, images, handleLoading } = props;
   let random = randomPokemon(images);
   const randomPokemonArray = useRef(random);
   if (level === 1)
@@ -33,7 +34,18 @@ export default function LoadingScreen(props: LoadingScreenProps) {
       </div>
     );
   return (
-    <div className="flex w-full h-[100vh] bg-slate-900 items-center justify-center">
+    <div className="flex w-full h-[100vh] bg-slate-900 items-center flex-col justify-center">
+      <div className="flex w-[40%] mb-[2rem] justify-around items-center pt-[2rem] text-3xl text-cyan-500">
+        <div className="flex">
+          <h1 className="mr-[0.5rem] text-yellow-500 font-black">Score: </h1>
+          {score}
+        </div>
+        <div className="flex">
+          <h1 className="mr-[0.5rem] text-yellow-500 font-black">Level:</h1>
+          {level}
+        </div>
+      </div>
+
       <div className="flex justify-center mb-[8rem] items-center w-full p-[1rem]">
         {randomPokemonArray.current.map((pokemon) => {
           return (
