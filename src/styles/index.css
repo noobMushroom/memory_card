@@ -2,7 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  @apply bg-slate-900;
-  @apply text-white;
+@font-face {
+  font-family: 'digital';
+  src: local('digital'), url(../assets/digital-7.ttf);
+}
+
+.digitalFont {
+  font-family: 'digital';
+}
+
+.pokemonButton:hover {
+  border: 5px solid red;
+  box-shadow: 10px 10px 20px 2px #ff0000, 0 2px 2px 0 #ff0000,
+    -5px -5px 20px 0 #ff0000;
+}
+
+.progressColor {
+  background-image: linear-gradient(to right, #3b4cca, #ff0000);
+}
+
+@keyframes Rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotateAnimation {
+  animation: Rotate 2s ease-in-out infinite;
+}
+
+.shadows {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.spanShadow {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }

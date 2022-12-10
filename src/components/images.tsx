@@ -5,7 +5,7 @@ export const getLink = (num: number): string => {
 };
 
 export const randomNumber = (num: number): number[] => {
-  let lastNumber = num * 4;
+  let lastNumber = num * 2 + 2;
   let array: number[] = [];
   let randNumber = Math.floor(Math.random() * 600);
   if (randNumber === 0) randNumber += 1;
